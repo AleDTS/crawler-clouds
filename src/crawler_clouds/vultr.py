@@ -1,5 +1,6 @@
-from .base import traz_conteudo, pega_arvore
+from .base import conteudo_2_arvore
 from lxml import etree
+
 
 URL = "https://www.vultr.com/products/cloud-compute/"
 
@@ -9,9 +10,7 @@ XPATH_COLUNA = "./div[$col]//text()"
 
 def crawl():
 
-    c = traz_conteudo(URL)
-
-    arvore = pega_arvore(c)
+    arvore = conteudo_2_arvore(URL)
 
     txts_col = etree.XPath(XPATH_COLUNA)
 
