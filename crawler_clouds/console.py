@@ -4,10 +4,11 @@ import json
 import os
 
 from . import __version__
-from . import vultr
+from . import vultr, digitalocean
 
 crawlers = {
     "vultr": vultr,
+    "digitalocean": digitalocean
 }
 
 
@@ -61,7 +62,7 @@ def salva_csv(nome_crawler):
 @click.option('--save_csv', is_flag=True, help="Salva dados em arquivo csv")
 def main(crawler, print, save_json, save_csv):
     """Crawler de informações para máquinas cloud"""
-    if crawler not in ['vultr']:
+    if crawler not in ['vultr', 'digitalocean']:
         raise click.BadParameter("Argumento inválido")
 
     if print:
